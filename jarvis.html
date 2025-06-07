@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Codex Assistant</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background: #0f172a;
+      color: #38bdf8;
+      font-family: monospace;
+      text-align: center;
+      padding-top: 20%;
+    }
+    h1 {
+      font-size: 2rem;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #38bdf8;
+      color: #0f172a;
+      font-size: 1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0ea5e9;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="output">Say: "Hey Codex, open YouTube"</h1>
+  <button onclick="startListening()">🎤 Start Listening</button>
+
+  <script>
+    const output = document.getElementById("output");
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    recognition.lang = 'en-IN';
+
+    recognition.onresult = function(event) {
+      const speech = event.results[0][0].transcript.toLowerCase();
+      output.textContent = "You said: " + speech;
+
+      if (speech.includes("hey codex") && speech.includes("open youtube")) {
+        window.open("https://www.youtube.com", "_blank");
+      }
+      if (speech.includes("hey codex") && speech.includes("open google")) {
+        window.open("https://www.google.com", "_blank");
+      }
+      if (speech.includes("hey codex") && speech.includes("open whatsapp")) {
+        window.open("https://web.whatsapp.com", "_blank");
+      }
+      if (speech.includes("hey codex") && speech.includes("what is the time")) {
+        const time = new Date().toLocaleTimeString();
+        output.textContent = "Current time is: " + time;
+      }
+    };
+
+    function startListening() {
+      recognition.start();
+    }
+  </script>
+</body>
+</html>
