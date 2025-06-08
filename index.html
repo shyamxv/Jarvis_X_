@@ -1,71 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Jarvis_X</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jarvis_X AI Assistant</title>
   <style>
     body {
-      background-color: #0f172a;
-      color: #38bdf8;
-      font-family: monospace;
-      text-align: center;
-      padding-top: 100px;
+      background-color: black;
+      color: #00ff00;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
     }
     h1 {
-      font-size: 2rem;
+      font-size: 2.5rem;
     }
     button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      background-color: #38bdf8;
-      color: #0f172a;
+      background: #00ff00;
       border: none;
+      color: black;
+      padding: 10px 20px;
       font-size: 1rem;
-      border-radius: 8px;
+      font-weight: bold;
       cursor: pointer;
+      margin-top: 20px;
     }
-    button:hover {
-      background-color: #0ea5e9;
+    #output {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-  <h1 id="output">Jarvis_X is ready. Say "Hey Jarvis,"</h1>
+
+  <h1>🧠 Jarvis_X is ready</h1>
+  <p>Say: <b>"Hey Jarvis, open YouTube"</b></p>
   <button onclick="startListening()">🎤 Start Listening</button>
+  <div id="output"></div>
 
   <script>
-    const output = document.getElementById("output");
-
-    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recognition = new SpeechRecognition();
     recognition.lang = 'en-IN';
 
     recognition.onresult = function(event) {
       const command = event.results[0][0].transcript.toLowerCase();
-      output.textContent = "You said: " + command;
+      document.getElementById("output").textContent = "You said: " + command;
 
       if (command.includes("hey jarvis") && command.includes("open youtube")) {
         window.open("https://www.youtube.com", "_blank");
-      }
-      else if (command.includes("hey jarvis") && command.includes("open google")) {
+      } else if (command.includes("hey jarvis") && command.includes("open google")) {
         window.open("https://www.google.com", "_blank");
-
-        else if (command.includes("hey jarvis") && command.includes("open instagram")) {
-  window.open("https://www.instagram.com", "_blank");
-  speak("Opening Instagram.");
-      }
-        }
-      else if (command.includes("hey jarvis") && command.includes("open gallery")) {
-        window.open("https://www.google.com", "_blank");
-      }
-      else if (command.includes("hey jarvis") && command.includes("open whatsapp")) {
+      } else if (command.includes("hey jarvis") && command.includes("open instagram")) {
+        window.open("https://www.instagram.com/shycrypt_07?igsh=MWwybzJiNm9kOWN6NQ==", "_blank");
+      } else if (command.includes("hey jarvis") && command.includes("open whatsapp")) {
         window.open("https://web.whatsapp.com", "_blank");
+      } else if (command.includes("hey jarvis") && command.includes("open github")) {
+        window.open("https://github.com", "_blank");
+      } else if (command.includes("hey jarvis") && command.includes("open gallery")) {
+        window.open("https://yourgallerylink.com", "_blank");
+      } else if (command.includes("hey jarvis") && command.includes("what's the time")) {
+        const now = new Date();
+        alert("Current Time: " + now.toLocaleTimeString());
+      } else {
+        document.getElementById("output").textContent += " | Command not recognized!";
       }
-  
+    };
 
     function startListening() {
       recognition.start();
     }
   </script>
+
 </body>
 </html>
