@@ -6,6 +6,10 @@
   <title>Jarvis_X AI Assistant</title>
   <style>
     body {
+      background-image: url('hack broo.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       background-color: black;
       color: #00ff00;
       font-family: 'Courier New', monospace;
@@ -15,10 +19,23 @@
       align-items: center;
       height: 100vh;
       margin: 0;
+      text-align: center;
+      backdrop-filter: brightness(0.7); /* Optional: darken image for text readability */
     }
+
     h1 {
       font-size: 2.5rem;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 10px 20px;
+      border-radius: 10px;
     }
+
+    p {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 8px 16px;
+      border-radius: 10px;
+    }
+
     button {
       background: #00ff00;
       border: none;
@@ -28,18 +45,22 @@
       font-weight: bold;
       cursor: pointer;
       margin-top: 20px;
+      border-radius: 5px;
     }
+
     #output {
       margin-top: 20px;
       font-size: 1.2rem;
-      text-align: center;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 10px 20px;
+      border-radius: 10px;
     }
   </style>
 </head>
 <body>
 
   <h1>🧠 Jarvis_X is ready</h1>
-  <p>Say: <b>"Hey Jarvis, "</b></p>
+  <p>Say: <b>"Hey Jarvis, open YouTube"</b></p>
   <button onclick="startListening()">🎤 Start Listening</button>
   <div id="output"></div>
 
